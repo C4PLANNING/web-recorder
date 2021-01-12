@@ -111,7 +111,9 @@ function videoStart() {
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function (stream) {
       video.srcObject = stream
-      video.play()
+      video.onloadedmetadata = (e) => {
+        video.play()
+      }
     })
     .catch(function (err) {
       console.log("An error occured! " + err)
