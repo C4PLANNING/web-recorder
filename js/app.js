@@ -9,12 +9,7 @@ let width = 320
 let height = 0
 var constraints = {
   audio: false,
-  video: {
-    // スマホのバックカメラを使用
-    facingMode: 'environment',
-    width: { min: 1280 },
-    height: { min: 720 }
-  }
+  video: true
 };
 let recorder = null
 let record_data = []
