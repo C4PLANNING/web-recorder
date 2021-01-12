@@ -110,9 +110,6 @@ function videoStart() {
   console.log(navigator.mediaDevices.getSupportedConstraints())
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function (stream) {
-      video.setAttribute('autoplay', '')
-      video.setAttribute('muted', '')      
-      video.setAttribute('playsinline', '')
       video.srcObject = stream
       video.play()
     })
