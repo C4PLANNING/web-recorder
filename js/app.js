@@ -12,8 +12,8 @@ var constraints = {
   video: {
     // スマホのバックカメラを使用
     facingMode: 'environment',
-    width: 2048,
-    height: 1536
+    width: 1280,
+    height: 720
   }
 };
 let recorder = null
@@ -110,6 +110,9 @@ function videoStart() {
   console.log(navigator.mediaDevices.getSupportedConstraints())
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function (stream) {
+      video.setAttribute('autoplay', '')
+      video.setAttribute('muted', '')      
+      video.setAttribute('playsinline', '')
       video.srcObject = stream
       video.play()
     })
