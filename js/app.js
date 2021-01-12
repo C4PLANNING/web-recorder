@@ -11,7 +11,7 @@ var constraints = {
   audio: false,
   video: {
     // スマホのバックカメラを使用
-    facingMode: { exact: "environment" },
+    facingMode: "user",
     width: { min: 800, ideal: 1280, max: 1920 },
     height: { min: 600, ideal:  720, max: 1080 }
   }
