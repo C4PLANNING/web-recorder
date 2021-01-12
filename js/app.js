@@ -11,9 +11,9 @@ var constraints = {
   audio: false,
   video: {
     // スマホのバックカメラを使用
-    facingMode: 'environment',
-    width: 1280,
-    height: 720
+    facingMode: { exact: "environment" },
+    width: 300,
+    height: 200
   }
 };
 let recorder = null
