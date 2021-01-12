@@ -12,8 +12,8 @@ var constraints = {
   video: {
     // スマホのバックカメラを使用
     facingMode: "user",
-    width: { min: 800, ideal: 1280, max: 1920 },
-    height: { min: 600, ideal:  720, max: 1080 }
+    width: 320,
+    height: 240
   }
 };
 let recorder = null
