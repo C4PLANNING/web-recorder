@@ -9,7 +9,12 @@ let width = 320
 let height = 0
 var constraints = {
   audio: false,
-  video: true
+  video: {
+    // スマホのバックカメラを使用
+    facingMode: 'environment',
+    width: { min: 1280 },
+    height: { min: 720 }
+  }
 };
 let recorder = null
 let record_data = []
@@ -102,6 +107,7 @@ function startup() {
 function videoStart() {
   streaming = false
   console.log(streaming)
+  console.log(navigator.mediaDevices.getSupportedConstraints())
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function (stream) {
       video.srcObject = stream
