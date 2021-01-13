@@ -1,5 +1,6 @@
 var myVideo, myPlayer;
 var canvas = document.querySelector('#overlay');
+let streaming = false
 
 window.onload = function(){
   if(navigator.mediaDevices === undefined) navigator.mediaDevices = {};
@@ -23,7 +24,8 @@ window.onload = function(){
 //========== Camera ==========//
 var myStream = null;
  
-function startCamera(){
+function startCamera() {
+  streaming = false
   navigator.mediaDevices.getUserMedia({ audio: false, video:{ width:320, height:240, facingMode: "environment"} })
   .then(function(stream){
     if("srcObject" in myVideo) myVideo.srcObject = stream;
@@ -57,12 +59,12 @@ function beginRecorde(){
   recorder = new MediaRecorder(myStream, {
     audioBitsPerSecond : 64000,
     videoBitsPerSecond : 512000,
-    mimeType : 'video/webm; codecs=vp9'
+    mimeType : 'video/mp4; codecs=vp9'
   });
   chunks = [];
  
   recorder.ondataavailable = function (e) {
-    var videoBlob = new Blob(chunks, { type : "video/webm" });
+    var videoBlob = new Blob(chunks, { type : "video/mp4" });
     blobUrl = window.URL.createObjectURL(videoBlob);
     chunks.push(e.data);
   };
@@ -82,7 +84,6 @@ function endRecorde(){
 function startPlayer(){
   if(!blobUrl){
     window.URL.revokeObjectURL(blobUrl);
-    console.log("error")
     blobUrl = null;
   };
   
@@ -91,11 +92,10 @@ function startPlayer(){
     myPlayer.setAttribute('width', 320)
     myPlayer.setAttribute('height', 240)
     myPlayer.src = blobUrl;
-    console.log(myPlayer)
-    myPlayer.onended = function(){
-      myPlayer.pause();
-    };
+    // myPlayer.onended = function(){
+    //   myPlayer.pause();
+    // };
     
-    
+    myPlayer.play();
   };
 };
