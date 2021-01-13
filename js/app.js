@@ -108,9 +108,22 @@ function videoStart() {
   streaming = false
   console.log(streaming)
   console.log(navigator.mediaDevices.getSupportedConstraints())
+  if(navigator.mediaDevices === undefined) navigator.mediaDevices = {};
+  if(navigator.mediaDevices.getUserMedia === undefined){
+    navigator.mediaDevices.getUserMedia = function(constraints){
+      var getUserMedia = (navigator.webkitGetUserMedia
+                       || navigator.mozGetUserMedia
+                       || navigator.msGetUserMedia
+                       || navigator.getUserMedia);
+      if(!getUserMedia) return Promise.reject(new Error('非対応ブラウザ'));
+      return new Promise(function(resolve, reject){
+        getUserMedia.call(navigator, constraints, resolve, reject);
+      });
+    };
+  };
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function (stream) {
-      if("srcObject" in myVideo) video.srcObject = stream
+      if("srcObject" in video) video.srcObject = stream
       else video.src = window.URL.createObjectURL(stream)
       video.onloadedmetadata = (e) => {
         video.play()
