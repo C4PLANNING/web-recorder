@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>browserCamamera TEST</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <video id="video" class="video" autoplay playsinline="true" muted loop></video>
-      <canvas id="overlay" class="overlay"></canvas><br>
-      <button id="startbutton">start!!</button><button id="stopbutton">stop!!</button><button
-        id="download">download!!</button><br>
-      <div>
-        <video id="test"></video>
-      </div>
-    </div>
-    <!-- ライブラリ -->
-    <script src="./js/lib/clmtrackr.js"></script>
-    <!-- 顔のモデル -->
-    <script src="./js/lib/model_pca_20_svm.js"></script>
-    <script src="./js/app.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>iOS</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <button onClick="startCamera()">カメラを起動</button>
+  <button onClick="stopCamera()">カメラを停止</button>
+  <br>
+  <video id="myVideo" autoplay playsinline></video>
+  <button onClick="beginRecorde()">録画を開始</button>
+  <button onClick="endRecorde()">録画を終了</button>
+  <br>
+  <video id="myPlayer" playsinline></video>
+</body>
+
 </html>
