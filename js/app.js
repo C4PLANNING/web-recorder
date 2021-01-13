@@ -56,15 +56,11 @@ function beginRecorde(){
   if(!myStream) return;
   if(recorder) return;
  
-  recorder = new MediaRecorder(myStream, {
-    audioBitsPerSecond : 64000,
-    videoBitsPerSecond : 512000,
-    mimeType : 'video/mp4; codecs=vp9'
-  });
+  recorder = new MediaRecorder(myStream);
   chunks = [];
  
   recorder.ondataavailable = function (e) {
-    var videoBlob = new Blob(chunks, { type : "video/mp4" });
+    var videoBlob = new Blob(chunks, { type : "video/webm" });
     blobUrl = window.URL.createObjectURL(videoBlob);
     chunks.push(e.data);
   };
