@@ -23,7 +23,7 @@ window.onload = function(){
 var myStream = null;
  
 function startCamera(){
-  navigator.mediaDevices.getUserMedia({ audio: false, video:{ width:320, height:240} })
+  navigator.mediaDevices.getUserMedia({ audio: false, video:{ width:320, height:240, facingMode: "environment"} })
   .then(function(stream){
     if("srcObject" in myVideo) myVideo.srcObject = stream;
     else myVideo.src = window.URL.createObjectURL(stream);
