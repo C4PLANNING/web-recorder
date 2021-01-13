@@ -83,12 +83,15 @@ function startPlayer(){
   };
   var videoBlob = new Blob(chunks, { type : "video/webm" });
   blobUrl = window.URL.createObjectURL(videoBlob);
-  if(blobUrl){
+  if (blobUrl) {
+    myPlayer.setAttribute('controls', '')
+    myPlayer.setAttribute('width', 320)
+    myPlayer.setAttribute('height', 240)
     myPlayer.src = blobUrl;
-    myPlayer.onended = function(){
-      myPlayer.pause();
-      myPlayer.src = "";
-    };
+    // myPlayer.onended = function(){
+    //   myPlayer.pause();
+    //   myPlayer.src = "";
+    // };
     myPlayer.play();
   };
 };
