@@ -125,7 +125,7 @@ function startup() {
     startbutton = document.getElementById('startbutton')
     stopbutton = document.getElementById('stopbutton')
     downloadbutton = document.getElementById('download')
-    console.log(video)
+    
     videoStart()
 
     video.addEventListener('canplay', function (ev) {
