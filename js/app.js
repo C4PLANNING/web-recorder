@@ -93,6 +93,7 @@ function startPlayer(){
     //   myPlayer.src = "";
     // };
     myPlayer.muted = true;
+    myPlayer.playsinline = true;
     myPlayer.play();
   };
 };
