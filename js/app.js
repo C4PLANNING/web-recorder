@@ -88,11 +88,10 @@ function startPlayer(){
     myPlayer.setAttribute('width', 320)
     myPlayer.setAttribute('height', 240)
     myPlayer.src = blobUrl;
-    // myPlayer.onended = function(){
-    //   myPlayer.pause();
-    //   myPlayer.src = "";
-    // };
-    myPlayer.muted = true;
+    myPlayer.onended = function(){
+      myPlayer.pause();
+    };
+    
     myPlayer.play();
   };
 };
