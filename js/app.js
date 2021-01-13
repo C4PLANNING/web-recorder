@@ -110,7 +110,8 @@ function videoStart() {
   console.log(navigator.mediaDevices.getSupportedConstraints())
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function (stream) {
-      video.srcObject = stream
+      if("srcObject" in myVideo) video.srcObject = stream
+      else video.src = window.URL.createObjectURL(stream)
       video.onloadedmetadata = (e) => {
         video.play()
       }
