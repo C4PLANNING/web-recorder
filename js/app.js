@@ -60,8 +60,7 @@ function beginRecorde(){
   });
   chunks = [];
  
-  recorder.ondataavailable = function (e) {
-    
+  recorder.ondataavailable = function(e){
     chunks.push(e.data);
   };
   recorder.onstop = function(e){
@@ -84,10 +83,7 @@ function startPlayer(){
   };
   var videoBlob = new Blob(chunks, { type : "video/webm" });
   blobUrl = window.URL.createObjectURL(videoBlob);
-  if (blobUrl) {
-    myPlayer.setAttribute('controls', '')
-    myPlayer.setAttribute('width', 320)
-    myPlayer.setAttribute('height', 240)
+  if(blobUrl){
     myPlayer.src = blobUrl;
     myPlayer.onended = function(){
       myPlayer.pause();
