@@ -92,6 +92,7 @@ function startPlayer(){
     //   myPlayer.pause();
     //   myPlayer.src = "";
     // };
+    myPlayer.muted = true;
     myPlayer.play();
   };
 };
