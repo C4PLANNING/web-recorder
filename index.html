@@ -24,10 +24,25 @@
     let canvas = null
     let photo = null
     let startbutton = null
-    let constrains = { video: true, audio: true }
+    let constrains = { video: true, audio: true, facingMode: "environment" }
     let recorder = null
     let record_data = []
 
+    window.onload = function () {
+      if (navigator.mediaDevices === undefined) navigator.mediaDevices = {};
+      if (navigator.mediaDevices.getUserMedia === undefined) {
+        navigator.mediaDevices.getUserMedia = function (constraints) {
+          var getUserMedia = (navigator.webkitGetUserMedia
+            || navigator.mozGetUserMedia
+            || navigator.msGetUserMedia
+            || navigator.getUserMedia);
+          if (!getUserMedia) return Promise.reject(new Error('非対応ブラウザ'));
+          return new Promise(function (resolve, reject) {
+            getUserMedia.call(navigator, constraints, resolve, reject);
+          });
+        };
+      };
+    };
     /**
      * ユーザーのデバイスによるカメラ表示を開始し、
      * 各ボタンの挙動を設定する
