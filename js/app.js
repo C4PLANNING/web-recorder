@@ -79,23 +79,24 @@ function startPlayer() {
 
   recorder.ondataavailable = function (e) {
     if(!blobUrl){
-    window.URL.revokeObjectURL(blobUrl);
-    blobUrl = null;
-  };
-  // var videoBlob = new Blob(chunks, { type : "video/webm" });
-  blobUrl = window.URL.createObjectURL(e.data);
-  if (blobUrl) {
-     myPlayer.setAttribute('controls', '')
-    myPlayer.setAttribute('width', 320)
-    myPlayer.setAttribute('height', 240)
-    chunks.push(e.data);
-    myPlayer.src = blobUrl;
-    // myPlayer.onended = function(){
-      // myPlayer.pause();
-      // myPlayer.src = "";
-    // };
-    // myPlayer.play();
-  };
+      window.URL.revokeObjectURL(blobUrl);
+      blobUrl = null;
+    }
+    // var videoBlob = new Blob(chunks, { type : "video/webm" });
+    else {
+      ;
+      myPlayer.setAttribute('controls', '')
+      myPlayer.setAttribute('width', 320)
+      myPlayer.setAttribute('height', 240)
+      blobUrl = window.URL.createObjectURL(e.data)
+      chunks.push(e.data);
+      myPlayer.src = blobUrl;
+      // myPlayer.onended = function(){
+        // myPlayer.pause();
+        // myPlayer.src = "";
+      // };
+      // myPlayer.play();
+    };
     
   };
   
