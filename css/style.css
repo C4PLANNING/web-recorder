@@ -37,9 +37,3 @@ body {
   top: 0;
   left: 0;
 }
-
-#myVideo {
-  display: block;
-  width: 320px;
-  height: 240px;
-}
