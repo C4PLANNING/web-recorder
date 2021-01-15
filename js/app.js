@@ -121,7 +121,12 @@ function videoStart() {
 function startRecorder() {
   navigator.mediaDevices.getUserMedia(constraints)
     .then((stream) => {
-      recorder = new MediaRecorder(stream)
+      console.log(stream)
+      recorder = new MediaRecorder(stream, {
+        audioBitsPerSecond: 64000,
+        videoBitsPerSecond: 512000,
+        mimeType: 'video/webm; codecs=vp9'
+      })
       recorder.ondataavailable = function (e) {
         var testvideo = document.querySelector('#test')
         testvideo.setAttribute('controls', '')
