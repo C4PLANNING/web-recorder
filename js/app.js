@@ -23,7 +23,7 @@ window.onload = function(){
 var myStream = null;
  
 function startCamera(){
-  navigator.mediaDevices.getUserMedia({ audio: false, video:{ width:320, height:240} })
+  navigator.mediaDevices.getUserMedia({ audio: false, video:{ width:320, height:240, facingMode: 'environment'} })
   .then(function(stream){
     if("srcObject" in myVideo) myVideo.srcObject = stream;
     else myVideo.src = window.URL.createObjectURL(stream);
@@ -56,7 +56,7 @@ function beginRecorde(){
   recorder = new MediaRecorder(myStream, {
     audioBitsPerSecond : 64000,
     videoBitsPerSecond : 512000,
-    mimeType : 'video/webm; codecs=vp9'
+    mimeType : 'video/mp4; codecs=vp9'
   });
   chunks = [];
  
